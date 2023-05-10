@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "insertIframe",
+    "version": "0.0.1",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "host_permissions": [
+        "https://*/*",
+        "http://*/*"
+    ],
+    "background": {
+        "service_worker": "src/lib/background.ts"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs",
+        "alarms",
+        "notifications"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "src/contentScript/Content.tsx"
+            ],
+            "run_at": "document_idle",
+            "matches": ["https://www.google.com/*"]
+        }
+    ]
+   
+  }
